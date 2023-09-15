@@ -35,7 +35,15 @@ public class MemberService {
     }
 
     public void updateApp(MemberDTO memberDTO) {
-        System.out.println(memberDTO + " service");
         memberRepository.updateApp(memberDTO);
+    }
+
+    public Boolean login(MemberDTO memberDTO) {
+        MemberDTO result = memberRepository.login(memberDTO);
+        if(result.getMemberEmail().equals(memberDTO.getMemberEmail()) && result.getMemberPassword().equals(memberDTO.getMemberPassword())) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

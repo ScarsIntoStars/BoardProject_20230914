@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -53,14 +54,33 @@ public MemberService memberService;
     public String update(@RequestParam("id") Long id, Model model) {
         MemberDTO memberDTO = memberService.update(id);
         model.addAttribute("memberOne", memberDTO);
-        System.out.println(memberDTO + " get");
         return "member/memberUpdate";
     }
 
     @PostMapping("/member/memberUpdate")
     public String update(@ModelAttribute MemberDTO memberDTO) {
-        System.out.println(memberDTO + " post");
         memberService.updateApp(memberDTO);
         return "index";
+    }
+
+    @GetMapping("/member/memberLogin")
+    public String login() {
+        return "member/memberLogin";
+    }
+
+
+    @PostMapping("/member/memberLogin")
+    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session, Model model){
+        boolean result = memberService.login(memberDTO);
+        if(result == true) {
+            System.out.println("로그인 성공");
+            session.setAttribute("loginEmail", memberDTO.getMemberEmail());
+            model.addAttribute("email", memberDTO.getMemberEmail());
+
+            return "index";
+        } else {
+            System.out.println("로그인 실패");
+            return "index";
+        }
     }
 }

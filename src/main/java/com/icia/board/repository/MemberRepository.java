@@ -32,7 +32,11 @@ public class MemberRepository {
     }
 
     public void updateApp(MemberDTO memberDTO) {
-        System.out.println(memberDTO + " repository");
         sql.update("Member.updateApp", memberDTO);
+    }
+
+    public MemberDTO login(MemberDTO memberDTO) {
+        MemberDTO result = sql.selectOne("Member.login", memberDTO);
+        return result;
     }
 }

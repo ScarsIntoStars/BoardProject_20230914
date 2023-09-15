@@ -22,7 +22,9 @@
         SET memberEmail=#{memberEmail}, memberPassword=#{memberPassword}, memberName=#{memberName}, memberMobile=#{memberMobile}
         WHERE id = #{id}
     </update>
-
+    <select id="login" parameterType="member" resultType="member">
+        SELECT * FROM member_table where memberEmail = #{memberEmail}
+    </select>
 </mapper>
 
 
