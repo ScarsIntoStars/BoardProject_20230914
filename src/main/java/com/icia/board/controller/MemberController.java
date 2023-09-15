@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
 
 @Controller
-public class MemberController<MemberDTO> {
+public class MemberController {
 @Autowired
 public MemberService memberService;
 
@@ -24,7 +24,7 @@ public MemberService memberService;
 
     @PostMapping("/member/memberSave")
     public String memberSave(@ModelAttribute MemberDTO memberDTO){
-        boolean result = memberService.save(MemberDTO memberDTO);
+        boolean result = memberService.save(memberDTO);
         if(result == true) {
             System.out.println("신규회원 등록 완료");
             return "index";
@@ -37,7 +37,7 @@ public MemberService memberService;
     @GetMapping("/member/memberFindAll")
     public String findAll(Model model){
         List<MemberDTO> memberDTOList = memberService.findAll();
-        model.addAttribute("member", memberDTOList);
+        model.addAttribute("memberDTOList", memberDTOList);
         return "member/memberFindAll";
     }
 }
