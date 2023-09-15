@@ -1,5 +1,6 @@
 package com.icia.board.controller;
 
+
 import com.icia.board.dto.MemberDTO;
 import com.icia.board.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
-public class MemberController {
+public class MemberController<MemberDTO> {
 @Autowired
 public MemberService memberService;
 
@@ -21,7 +24,7 @@ public MemberService memberService;
 
     @PostMapping("/member/memberSave")
     public String memberSave(@ModelAttribute MemberDTO memberDTO){
-        boolean result = memberService.save(memberDTO);
+        boolean result = memberService.save(MemberDTO memberDTO);
         if(result == true) {
             System.out.println("신규회원 등록 완료");
             return "index";
@@ -32,9 +35,9 @@ public MemberService memberService;
     }
 
     @GetMapping("/member/memberFindAll")
-    public List<MemberDTO> findAll(Model model){
+    public String findAll(Model model){
         List<MemberDTO> memberDTOList = memberService.findAll();
-        model.addAttribute("member", memberDTOList)
-        return "memberFindAll";
+        model.addAttribute("member", memberDTOList);
+        return "member/memberFindAll";
     }
 }

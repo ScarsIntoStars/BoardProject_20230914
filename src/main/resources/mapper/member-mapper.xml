@@ -8,6 +8,9 @@
         INSERT INTO member_table(memberEmail, memberPassword, memberName, memberMobile)
             values (#{memberEmail}, #{memberPassword}, #{memberName}, #{memberMobile})
     </insert>
+    <select id="findAll" resultType="member">
+        SELECT * FROM member_table
+    </select>
 
 </mapper>
 

@@ -1,9 +1,12 @@
 package com.icia.board.repository;
 
+
 import com.icia.board.dto.MemberDTO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class MemberRepository {
@@ -16,6 +19,6 @@ public class MemberRepository {
 
     public List<MemberDTO> findAll(){
         List<MemberDTO> memberDTOList = sql.selectList("Member.findAll");
-        return memberDTOListO;
+        return memberDTOList;
     }
 }
