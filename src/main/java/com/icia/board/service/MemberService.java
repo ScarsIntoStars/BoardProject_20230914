@@ -28,4 +28,14 @@ public class MemberService {
     public void delete(Long id) {
         memberRepository.delete(id);
     }
+
+    public MemberDTO update(Long id) {
+        MemberDTO result = memberRepository.update(id);
+        return result;
+    }
+
+    public void updateApp(MemberDTO memberDTO) {
+        System.out.println(memberDTO + " service");
+        memberRepository.updateApp(memberDTO);
+    }
 }

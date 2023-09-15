@@ -26,6 +26,7 @@ public MemberService memberService;
     @PostMapping("/member/memberSave")
     public String memberSave(@ModelAttribute MemberDTO memberDTO){
         boolean result = memberService.save(memberDTO);
+        System.out.println(memberDTO);
         if(result == true) {
             System.out.println("신규회원 등록 완료");
             return "index";
@@ -46,5 +47,20 @@ public MemberService memberService;
     public String delete(@RequestParam("id") Long id) {
         memberService.delete(id);
         return "redirect:/member/memberFindAll";
+    }
+
+    @GetMapping("/member/memberUpdate")
+    public String update(@RequestParam("id") Long id, Model model) {
+        MemberDTO memberDTO = memberService.update(id);
+        model.addAttribute("memberOne", memberDTO);
+        System.out.println(memberDTO + " get");
+        return "member/memberUpdate";
+    }
+
+    @PostMapping("/member/memberUpdate")
+    public String update(@ModelAttribute MemberDTO memberDTO) {
+        System.out.println(memberDTO + " post");
+        memberService.updateApp(memberDTO);
+        return "index";
     }
 }

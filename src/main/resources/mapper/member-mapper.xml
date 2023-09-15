@@ -14,6 +14,14 @@
     <delete id="delete" parameterType="member">
         DELETE FROM member_table where id = #{id}
     </delete>
+    <select id="memberOne" resultType="member">
+        SELECT * FROM member_table WHERE id = #{id}
+    </select>
+    <update id="updateApp" parameterType="member">
+        UPDATE member_table
+        SET memberEmail=#{memberEmail}, memberPassword=#{memberPassword}, memberName=#{memberName}, memberMobile=#{memberMobile}
+        WHERE id = #{id}
+    </update>
 
 </mapper>
 

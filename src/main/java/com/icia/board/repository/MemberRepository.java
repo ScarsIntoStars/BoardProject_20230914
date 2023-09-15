@@ -25,4 +25,14 @@ public class MemberRepository {
     public void delete(Long id) {
         sql.delete("Member.delete", id);
     }
+
+    public MemberDTO update(Long id) {
+        MemberDTO result = sql.selectOne("Member.memberOne", id);
+        return result;
+    }
+
+    public void updateApp(MemberDTO memberDTO) {
+        System.out.println(memberDTO + " repository");
+        sql.update("Member.updateApp", memberDTO);
+    }
 }
