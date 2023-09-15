@@ -17,4 +17,9 @@ public class MemberService {
             return false;
         }
     }
+
+    public List<MemberDTO> findAll(){
+        List<MemberDTO> memberDTOList = memberRepository.findAll();
+        return memberDTOList;
+    }
 }

@@ -4,6 +4,7 @@ import com.icia.board.dto.MemberDTO;
 import com.icia.board.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,5 +29,12 @@ public MemberService memberService;
             System.out.println("신규회원 등록 실패");
             return "member/memberSave";
         }
+    }
+
+    @GetMapping("/member/memberFindAll")
+    public List<MemberDTO> findAll(Model model){
+        List<MemberDTO> memberDTOList = memberService.findAll();
+        model.addAttribute("member", memberDTOList)
+        return "memberFindAll";
     }
 }

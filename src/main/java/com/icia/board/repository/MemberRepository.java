@@ -13,4 +13,9 @@ public class MemberRepository {
         int result =  sql.insert("Member.save", memberDTO);
         return result;
     }
+
+    public List<MemberDTO> findAll(){
+        List<MemberDTO> memberDTOList = sql.selectList("Member.findAll");
+        return memberDTOListO;
+    }
 }
