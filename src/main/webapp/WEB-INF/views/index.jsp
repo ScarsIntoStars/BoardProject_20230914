@@ -9,6 +9,8 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="/resources/css/main.css">
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 </head>
 <body>
 <h1>index page입니다.</h1>
