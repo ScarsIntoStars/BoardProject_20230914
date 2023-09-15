@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -39,5 +40,11 @@ public MemberService memberService;
         List<MemberDTO> memberDTOList = memberService.findAll();
         model.addAttribute("memberDTOList", memberDTOList);
         return "member/memberFindAll";
+    }
+
+    @GetMapping("/member/memberDelete")
+    public String delete(@RequestParam("id") Long id) {
+        memberService.delete(id);
+        return "redirect:/member/memberFindAll";
     }
 }

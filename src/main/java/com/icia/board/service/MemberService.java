@@ -24,4 +24,8 @@ public class MemberService {
         List<MemberDTO> memberDTOList = memberRepository.findAll();
         return memberDTOList;
     }
+
+    public void delete(Long id) {
+        memberRepository.delete(id);
+    }
 }
