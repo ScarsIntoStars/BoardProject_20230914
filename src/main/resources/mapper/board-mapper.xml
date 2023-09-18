@@ -15,6 +15,11 @@
         SELECT * FROM board_table
         where id=#{id}
     </select>
+    <update id="update" parameterType="Long">
+        UPDATE board_table
+        SET boardHits = #{boardHits} + 1
+        WHERE id = #{id}
+    </update>
 </mapper>
 
 

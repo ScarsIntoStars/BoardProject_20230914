@@ -25,4 +25,8 @@ public class BoardService {
         BoardDTO boardDTO = boardRepository.findById(id);
         return boardDTO;
     }
+
+    public void update(Long id) {
+        boardRepository.update(id);
+    }
 }

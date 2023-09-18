@@ -44,4 +44,10 @@ public class BoardController {
         return "board/boardFindById";
     }
 
+    @PostMapping("/board/boardFindById")
+    public void update(@RequestParam("id") Long id){
+        System.out.println(id + " post");
+        boardService.update(id);
+    }
+
 }
