@@ -13,11 +13,15 @@
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 </head>
 <body>
+<%@include file="componnent/nav.jsp"%>
 <h1>index page입니다.</h1>
 
 <a href="/member/memberSave">회원가입</a>
 <a href="/member/memberLogin">로그인</a>
 <a href="/member/memberFindAll">회원목록</a>
+<hr>
+<a href="/board/boardSave">게시글 작성</a>
+
 
 </body>
 </html>

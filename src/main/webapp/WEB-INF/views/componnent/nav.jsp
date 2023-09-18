@@ -24,7 +24,7 @@
                     <a class="nav-link" href="/member/memberFindAll">회원리스트</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    <a class="nav-link" href="/board/boardSave">글쓰기</a>
                 </li>
             </ul>
         </div>

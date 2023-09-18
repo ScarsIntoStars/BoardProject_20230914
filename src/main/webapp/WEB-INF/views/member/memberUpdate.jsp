@@ -9,8 +9,12 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="/resources/css/main.css">
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 </head>
 <body>
+<%@include file="../componnent/nav.jsp"%>
+
 <h3>업데이트 페이지</h3>
 <div>
   <form action="/member/memberUpdate" method="post">

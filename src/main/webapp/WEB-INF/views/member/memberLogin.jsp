@@ -8,6 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+  <%@include file="../componnent/nav.jsp"%>
+  <link rel="stylesheet" href="/resources/css/main.css">
+  <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+
   <h3>로그인 페이지</h3>
   <div>
     <form action="/member/memberLogin" method="post">
