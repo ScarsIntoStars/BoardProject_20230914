@@ -23,11 +23,10 @@ public class BoardRepository {
     }
 
     public BoardDTO findById(Long id) {
+        sql.update("Board.update", id);
         BoardDTO boardDTO = sql.selectOne("Board.findById", id);
         return boardDTO;
     }
 
-    public void update(Long id) {
-        sql.update("Board.update", id);
-    }
+
 }

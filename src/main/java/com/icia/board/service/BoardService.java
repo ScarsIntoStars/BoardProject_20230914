@@ -26,7 +26,5 @@ public class BoardService {
         return boardDTO;
     }
 
-    public void update(Long id) {
-        boardRepository.update(id);
-    }
+
 }
