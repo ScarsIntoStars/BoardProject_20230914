@@ -8,7 +8,13 @@
         INSERT INTO board_table(boardTitle, boardWriter, boardContents, boardPassword)
         values (#{boardTitle}, #{boardWriter}, #{boardContents}, #{boardPassword})
     </insert>
-
+    <select id="findAll" resultType="board">
+        SELECT * FROM board_table;
+    </select>
+    <select id="findById" resultType="board">
+        SELECT * FROM board_table
+        where id=#{id}
+    </select>
 </mapper>
 
 

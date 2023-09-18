@@ -21,6 +21,8 @@
 <a href="/member/memberFindAll">회원목록</a>
 <hr>
 <a href="/board/boardSave">게시글 작성</a>
+<a href="/board/boardFindAll">게시글 목록</a>
+
 
 
 </body>

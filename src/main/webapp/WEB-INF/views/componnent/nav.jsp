@@ -26,6 +26,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/board/boardSave">글쓰기</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/board/boardFindAll">글목록</a>
+                </li>
             </ul>
         </div>
     </div>
