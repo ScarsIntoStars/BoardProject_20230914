@@ -13,18 +13,37 @@
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 </head>
 <body>
-<%@include file="../componnent/nav.jsp"%>
-
+<%@include file="../componnent/nav.jsp" %>
 <h3>회원가입 페이지</h3>
-<div>
-    <form action="/member/memberSave" method="post">
-        <input type="text" placeholder="이메일" name="memberEmail"> <br>
-        <input type="text" placeholder="비밀번호" name="memberPassword"> <br>
-        <input type="text" placeholder="이름" name="memberName"> <br>
-        <input type="text" placeholder="전화번호" name="memberMobile"> <br>
-        <input type="submit" value="회원가입">
-    </form>
+<div class="container pt-3">
+    <div class="card p-3 m-3">
+        <form action="/member/memberSave" method="post">
+            <div class="input-group flex-nowrap p-2">
+                <span class="input-group-text">이메일</span>
+                <input type="text" class="form-control" name="memberEmail" placeholder="email@naver.com"
+                       aria-label="Username" aria-describedby="addon-wrapping">
+            </div>
+            <div class="input-group flex-nowrap p-2">
+                <span class="input-group-text">비밀번호</span>
+                <input type="text" class="form-control" name="memberPassword" placeholder="password"
+                       aria-label="Username" aria-describedby="addon-wrapping">
+            </div>
+            <div class="input-group flex-nowrap p-2">
+                <span class="input-group-text">이름</span>
+                <input type="text" class="form-control" name="memberName" placeholder="name"
+                       aria-label="Username" aria-describedby="addon-wrapping">
+            </div>
+            <div class="input-group flex-nowrap p-2">
+                <span class="input-group-text">전화번호</span>
+                <input type="text" class="form-control" name="memberMobile" placeholder="010-0000-0000"
+                       aria-label="Username" aria-describedby="addon-wrapping">
+            </div>
+            <br>
+            <input type="submit" value="회원가입">
+        </form>
+    </div>
 </div>
+
 
 </body>
 </html>

@@ -18,26 +18,40 @@
 <%@include file="../componnent/nav.jsp"%>
 
 <h3>회원목록 페이지</h3>
-<table>
-    <tr>
-        <td>이메일</td>
-        <td>비밀번호</td>
-        <td>이름</td>
-        <td>전화번호</td>
-        <td>삭제</td>
-    </tr>
-    <c:forEach items="${memberDTOList}" var="member">
-        <tr>
-            <td><a href="/member/memberUpdate?id=${member.id}">${member.memberEmail}</a></td>
-            <td>${member.memberPassword}</td>
-            <td>${member.memberName}</td>
-            <td>${member.memberMobile}</td>
-            <td>
-                <button type="submit" onclick="delete_fn('${member.id}')">삭제</button>
-            </td>
-        </tr>
-    </c:forEach>
-</table>
+
+<div class="container">
+    <div class="card p-3">
+        <div class="row">
+            <div class="cal">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th class="text-center" scope="col">이메일</th>
+                        <th class="text-center" scope="col">비밀번호</th>
+                        <th class="text-center" scope="col">이름</th>
+                        <th class="text-center" scope="col">전화번호</th>
+                        <th class="text-center" scope="col">삭제</th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                    <c:forEach items="${memberDTOList}" var="member">
+                        <tr>
+                            <td class="text-center"><a href="/member/memberUpdate?id=${member.id}">${member.memberEmail}</a></td>
+                            <td class="text-center">${member.memberPassword}</td>
+                            <td class="text-center">${member.memberName}</td>
+                            <td class="text-center">${member.memberMobile}</td>
+                            <td class="text-center">
+                                <button class="btn btn-warning" type="submit" onclick="delete_fn('${member.id}')">삭제</button>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 <script>
     const delete_fn = (id) => {
