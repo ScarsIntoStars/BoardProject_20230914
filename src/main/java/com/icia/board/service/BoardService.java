@@ -21,8 +21,8 @@ public class BoardService {
         return boardDTOList;
     }
 
-    public void findById(Long id) {
-        boardRepository.findById(id);
-
+    public BoardDTO findById(Long id) {
+        BoardDTO boardDTO = boardRepository.findById(id);
+        return boardDTO;
     }
 }

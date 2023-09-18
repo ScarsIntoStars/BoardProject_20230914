@@ -22,7 +22,8 @@ public class BoardRepository {
         return boardDTO;
     }
 
-    public void findById(Long id) {
-        sql.selectOne("Board.findById", id);
+    public BoardDTO findById(Long id) {
+        BoardDTO boardDTO = sql.selectOne("Board.findById", id);
+        return boardDTO;
     }
 }

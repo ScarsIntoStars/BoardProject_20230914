@@ -38,8 +38,9 @@ public class BoardController {
     }
 
     @GetMapping("/board/boardFindById")
-    public String findById(@RequestParam("id") Long id){
-        boardService.findById(id);
+    public String findById(@RequestParam("id") Long id, Model model){
+        BoardDTO boardDTO = boardService.findById(id);
+        model.addAttribute("board", boardDTO);
         return "board/boardFindById";
     }
 

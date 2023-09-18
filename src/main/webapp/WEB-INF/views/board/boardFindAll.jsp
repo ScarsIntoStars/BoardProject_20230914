@@ -25,8 +25,8 @@
                     <tbody class="table-group-divider">
                     <c:forEach items="${board}" var="board">
                         <tr>
-                            <td class="text-center"><a href="/board/boardFindById">${board.id}</a></td>
-                            <td class="text-center">${board.boardTitle}</td>
+                            <td class="text-center">${board.id}</td>
+                            <td><a href="/board/boardFindById?id=${board.id}">${board.boardTitle}</a></td>
                             <td class="text-center">${board.boardWriter}</td>
                             <td class="text-center">${board.boardHits}</td>
                         </tr>
