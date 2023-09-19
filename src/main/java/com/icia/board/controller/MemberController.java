@@ -70,17 +70,24 @@ public MemberService memberService;
 
 
     @PostMapping("/member/memberLogin")
-    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session, Model model){
-        boolean result = memberService.login(memberDTO);
-        if(result == true) {
+    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session, Model model) {
+        MemberDTO result = memberService.login(memberDTO);
+        System.out.println(memberDTO);
+        if (memberDTO.getMemberEmail().equals(result.getMemberEmail()) && memberDTO.getMemberPassword().equals(result.getMemberPassword())) {
             System.out.println("로그인 성공");
-            session.setAttribute("loginEmail", memberDTO.getMemberEmail());
-            model.addAttribute("email", memberDTO.getMemberEmail());
-
+            session.setAttribute("loginEmail", result.getMemberEmail());
+            session.setAttribute("loginName", result.getMemberName());
             return "index";
         } else {
             System.out.println("로그인 실패");
             return "index";
+
         }
     }
+    @GetMapping("/member/memberLogout")
+    public String logout(HttpSession session){
+        session.removeAttribute("loginEmail");
+        return "redirect:/";
+    }
+
 }

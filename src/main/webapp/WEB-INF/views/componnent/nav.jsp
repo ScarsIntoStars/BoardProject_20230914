@@ -13,10 +13,8 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
+
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">로그인</a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/member/memberSave">회원가입</a>
                 </li>
@@ -29,7 +27,24 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/board/boardFindAll">글목록</a>
                 </li>
+                <li class="menu-item" id="login-area">
+                </li>
             </ul>
+
         </div>
     </div>
 </nav>
+<script>
+    const loginArea = document.getElementById("login-area");
+    const loginEmail = '${sessionScope.loginEmail}';
+    const loginName = '${sessionScope.loginName}';
+    console.log(loginEmail.length)
+    if(loginEmail != 0) {
+        // 로그인 했음
+        loginArea.innerHTML = loginName +"님 환영합니다!" + "<a href='/member/memberLogout'>logout</a>"
+
+    } else {
+        // 로그인 안했음
+        loginArea.innerHTML=  "<a href='/member/memberLogin'>로그인</a>";
+    }
+</script>

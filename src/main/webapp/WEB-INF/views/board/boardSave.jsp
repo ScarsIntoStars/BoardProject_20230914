@@ -19,7 +19,7 @@
 
 <H3>글쓰기 페이지</H3>
 <div class="container">
-<div class="card">
+<div class="card p-4">
     <form action="/board/boardSave" method="post">
         <div class="mb-3" >
             <label for="exampleFormControlInput1" class="form-label">글 제목</label>

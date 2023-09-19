@@ -36,7 +36,9 @@ public class MemberRepository {
     }
 
     public MemberDTO login(MemberDTO memberDTO) {
+        System.out.println("sql 전 : " + memberDTO);
         MemberDTO result = sql.selectOne("Member.login", memberDTO);
+        System.out.println("sql 후 : " + result);
         return result;
     }
 }

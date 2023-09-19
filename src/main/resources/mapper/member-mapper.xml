@@ -25,6 +25,7 @@
     <select id="login" parameterType="member" resultType="member">
         SELECT * FROM member_table where memberEmail = #{memberEmail}
     </select>
+
 </mapper>
 
 

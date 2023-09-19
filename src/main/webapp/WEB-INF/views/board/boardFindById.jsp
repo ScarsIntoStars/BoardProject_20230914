@@ -27,15 +27,18 @@
       </div>
   </div>
     <hr>
-    <form action="/comment/commentSave" method="post">
 
     <div class="form-floating mt-3">
         <textarea name="comment" class="form-control" placeholder="comment 입력" id="floatingTextarea"></textarea>
-        <label for="floatingTextarea">Comment 작성</label>
+        <label id="comment-text" for="floatingTextarea">Comment 작성</label>
     </div>
-        <button class="btn btn-primary mt-2">입력</button>
-    </form>
+        <button class="btn btn-primary mt-2" onclick="comment_write()">입력</button>
+
 </div>
 
 </body>
+<script>
+
+
+</script>
 </html>

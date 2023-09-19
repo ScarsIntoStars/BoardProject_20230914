@@ -9,6 +9,7 @@
 </head>
 <body>
 <%@include file="../componnent/nav.jsp" %>
+<h3>글 목록</h3>
 <div class="container">
     <div class="card p-3">
         <div class="row">
