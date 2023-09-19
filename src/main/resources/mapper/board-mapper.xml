@@ -8,6 +8,10 @@
         INSERT INTO board_table(boardTitle, boardWriter, boardContents, boardPassword)
         values (#{boardTitle}, #{boardWriter}, #{boardContents}, #{boardPassword})
     </insert>
+    <insert id="saveFile" parameterType="boardFile">
+        INSERT INTO board_file_table(originalFileName, storedFileName, boardId)
+        values (#{originalFileName}, #{storedFileName}, #{boardId})
+    </insert>
     <select id="findAll" resultType="board">
         SELECT * FROM board_table;
     </select>
