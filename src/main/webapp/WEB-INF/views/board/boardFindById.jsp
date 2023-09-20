@@ -12,6 +12,7 @@
     <title>Title</title>
     <link rel="stylesheet" href="/resources/css/main.css">
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 <%@include file="../componnent/nav.jsp" %>
@@ -30,28 +31,35 @@
     <hr>
 
     <div class="form-floating mt-3">
-        <textarea name="comment" class="form-control" placeholder="comment 입력" id="floatingTextarea"></textarea>
-        <label id="comment-text" for="floatingTextarea">Comment 작성</label>
-        <label id="comment-writer" for="floatingTextarea">작성자</label>
-
+        <textarea name="comment" id="comment-text" class="form-control" id="floatingTextarea"></textarea>
+        <label for="floatingTextarea">Comment 작성</label>
     </div>
-    <button class="btn btn-primary mt-2" onclick="comment_write()">입력</button>
+
+    <div class="form-floating mt-3">
+        <textarea name="comment" class="form-control" id="floatingWriterArea" readonly>${sessionScope.loginName}</textarea>
+        <label for="floatingWriterArea">작성자</label>
+    </div>
+    <input class="btn btn-primary mt-2" onclick="comment_write()">입력</input>
 
 </div>
 
 </body>
 <script>
     const comment_write = () => {
-        const commentWriter = '#{sessionScope.loginName}';
-        const commentText = document.getElementById("#comment-text");
-        const boardId = '{board.id}';
+        const commentWriter = '${sessionScope.loginName}';
+        const commentText = document.getElementById("comment-text").value;
+        // const commentWriter = document.getElementById("#comment-writer");
+        const boardId = '${board.id}';
+        console.log("commentWriter : " + commentWriter)
+        console.log("commentText : " + commentText)
+
         $.ajax({
                 type: "post",
                 url: "/comment/commentSave",
                 data: {
                     commentWriter: commentWriter,
                     commentText: commentText,
-                    id: boardId
+                    boardId: boardId
                 },
                 success: function (run) {
                     console.log("리턴값 : ", run);
@@ -69,6 +77,7 @@
                         output += "    </tr>\n";
                     }
                     output += "<table>";
+                    result.innerHTML= output;
                     document.getElementById("comment-writer").value = "";
                     document.getElementById("comment-text").value = "";
                 },
