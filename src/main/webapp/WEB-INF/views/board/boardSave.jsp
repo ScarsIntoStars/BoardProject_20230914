@@ -20,7 +20,7 @@
 <H3>글쓰기 페이지</H3>
 <div class="container">
 <div class="card p-4">
-    <form action="/board/boardSave" method="post">
+    <form action="/board/boardSave" method="post" enctype="multipart/form-data">
         <div class="mb-3" >
             <label for="exampleFormControlInput1" class="form-label">글 제목</label>
             <input type="text" name="boardTitle" class="form-control" id="exampleFormControlInput1" placeholder="제목을 입력하시오">
