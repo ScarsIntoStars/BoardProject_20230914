@@ -6,19 +6,19 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-sm bg-body-tertiary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/">Main Page</a>
+        <a class="navbar-brand" href="/">Main</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
 
             <ul class="navbar-nav">
-                <li class="nav-item">
+                <li id="memberJoin" class="nav-item">
                     <a class="nav-link" href="/member/memberSave">회원가입</a>
                 </li>
-                <li class="nav-item">
+                <li id="memberList" class="nav-item">
                     <a class="nav-link" href="/member/memberFindAll">회원리스트</a>
                 </li>
                 <li class="nav-item">
@@ -42,9 +42,21 @@
     if(loginEmail != 0) {
         // 로그인 했음
         loginArea.innerHTML = loginName +"님 환영합니다!" + "<a href='/member/memberLogout'>logout</a>"
-
     } else {
         // 로그인 안했음
         loginArea.innerHTML=  "<a href='/member/memberLogin'>로그인</a>";
+    }
+
+    if(loginEmail=="admin") {
+        // 관리자 로그인
+        $("#memberJoin").hide();
+    } else {
+        $("#memberJoin").show();
+    }
+
+    if(loginEmail!="admin") {
+        $("#memberList").show();
+    } else {
+        $("#memberList").hide();
     }
 </script>

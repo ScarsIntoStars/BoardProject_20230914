@@ -23,6 +23,8 @@
     <input type="reset" value="취소">
   </form>
 </div>
+<%@include file="../componnent/footer.jsp"%>
+
 </body>
 <script>
   

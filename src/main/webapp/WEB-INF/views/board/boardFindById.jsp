@@ -43,7 +43,7 @@
     </div>
     <input class="btn btn-primary mt-2" onclick="comment_write()">입력</input>
 </div>
-
+<%@include file="../componnent/footer.jsp"%>
 </body>
 
 <script id="temp_comment" type="text/x-handlebars-template">

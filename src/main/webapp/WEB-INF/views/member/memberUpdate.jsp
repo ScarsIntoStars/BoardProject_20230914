@@ -26,6 +26,7 @@
       <input type="submit" value="회원정보수정">
   </form>
 </div>
+<%@include file="../componnent/footer.jsp"%>
 
 </body>
 </html>
