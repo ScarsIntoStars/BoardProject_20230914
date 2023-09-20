@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/resources/css/main.css">
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
 </head>
 <body>
 <%@include file="../componnent/nav.jsp" %>
@@ -29,7 +30,8 @@
         </div>
     </div>
     <hr>
-
+    <div id="div_comment"></div>
+    <hr>
     <div class="form-floating mt-3">
         <textarea name="comment" id="comment-text" class="form-control" id="floatingTextarea"></textarea>
         <label for="floatingTextarea">Comment 작성</label>
@@ -40,10 +42,27 @@
         <label for="floatingWriterArea">작성자</label>
     </div>
     <input class="btn btn-primary mt-2" onclick="comment_write()">입력</input>
-
 </div>
 
 </body>
+
+<script id="temp_comment" type="text/x-handlebars-template">
+    <table class="table">
+        <tr>
+            <td>작성자</td>
+            <td>내용</td>
+            <td>작성일</td>
+        </tr>
+        {{#each .}}
+        <tr>
+            <td>{{commentWriter}}</td>
+            <td>{{commentText}}</td>
+            <td>{{createdAt}}</td>
+        </tr>
+        {{/each}}
+    </table>
+</script>
+
 <script>
     const comment_write = () => {
         const commentWriter = '${sessionScope.loginName}';
@@ -57,33 +76,39 @@
                 type: "post",
                 url: "/comment/commentSave",
                 data: {
-                    commentWriter: commentWriter,
-                    commentText: commentText,
-                    boardId: boardId
+                    commentWriter:commentWriter,
+                    commentText:commentText,
+                    boardId:boardId
                 },
-                success: function (run) {
-                    console.log("리턴값 : ", run);
-                    let output = "<table id=\"comment-list\">\n" +
-                        "    <tr>\n" +
-                        "        <th>작성자</th>\n" +
-                        "        <th>내용</th>\n" +
-                        "        <th>작성시간</th>\n" +
-                        "    </tr>\n";
-                    for (let i in run) {
-                        output += "    <tr>\n";
-                        output += "        <td>" + run[i].commentWriter + "</td>\n";
-                        output += "        <td>" + run[i].commentText + "</td>\n";
-                        output += "        <td>" + run[i].createdAt + "</td>\n";
-                        output += "    </tr>\n";
-                    }
-                    output += "<table>";
-                    result.innerHTML= output;
-                    document.getElementById("comment-writer").value = "";
-                    document.getElementById("comment-text").value = "";
+                success: function (data) {
+                    console.log("리턴값 : ", data);
+                    const temp = Handlebars.compile($("#temp_comment").html());
+                    const html=temp(data);
+                    $("#div_comment").html(html);
+                    // let output = "<table id=\"comment-list\">\n" +
+                    //     "    <tr>\n" +
+                    //     "        <th>작성자</th>\n" +
+                    //     "        <th>내용</th>\n" +
+                    //     "        <th>작성시간</th>\n" +
+                    //     "    </tr>\n";
+                    // for (let i in run) {
+                    //     output += "    <tr>\n";
+                    //     output += "        <td>" + run[i].commentWriter + "</td>\n";
+                    //     output += "        <td>" + run[i].commentText + "</td>\n";
+                    //     output += "        <td>" + run[i].createdAt + "</td>\n";
+                    //     output += "    </tr>\n";
+                    // }
+                    // output += "<table>";
+                    // document.getElementById("comment-writer").value = "";
+                    // document.getElementById("comment-text").value = "";
+
+
+
+
                 },
-            error: function () {
+                error: function () {
                     console.log("댓글 작성 실패")
-            }
+                }
             }
         )
 

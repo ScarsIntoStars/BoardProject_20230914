@@ -9,7 +9,7 @@
         VALUES (#{commentWriter}, #{commentText}, #{boardId})
     </insert>
     <select id="findAll" parameterType="Long" resultType="comment">
-        select id, commentWriter, commentContents,
+        select id, commentWriter, commentText,
                date_format(createdAt, "%y-%m-%d %H:%i:%s") as createdAt, boardId
         from comment_table where boardId = #{boardId} order by id desc
     </select>
