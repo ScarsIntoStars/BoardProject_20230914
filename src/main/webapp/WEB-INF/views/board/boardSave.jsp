@@ -37,7 +37,7 @@
             <label for="exampleFormControlInput1" class="form-label">비밀번호</label>
             <input name="boardPassword" type="text" class="form-control" id="exampleFormControlInput3" placeholder="비밀번호를 입력하시오">
         </div>
-<%--        <input type="file" name="boardFile"> <br> <br>--%>
+        <input type="file" name="boardFile"> <br> <br>
         <input type="submit" value="입력">
         <input type="reset" value="취소">
     </form>

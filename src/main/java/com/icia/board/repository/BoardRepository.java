@@ -12,9 +12,9 @@ import java.util.List;
 public class BoardRepository {
     @Autowired
     private SqlSessionTemplate sql;
-    public int save(BoardDTO boardDTO) {
-        int result = sql.insert("Board.save", boardDTO);
-        return result;
+    public BoardDTO save(BoardDTO boardDTO) {
+        sql.insert("Board.save", boardDTO);
+        return boardDTO;
     }
 
     public List<BoardDTO> findAll() {

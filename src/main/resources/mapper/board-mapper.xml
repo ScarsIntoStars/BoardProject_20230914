@@ -4,10 +4,14 @@
 
 <!-- namespace 반드시 작성! -->
 <mapper namespace="Board">
-    <insert id="save" parameterType="board">
-        INSERT INTO board_table(boardTitle, boardWriter, boardContents, boardPassword)
-        values (#{boardTitle}, #{boardWriter}, #{boardContents}, #{boardPassword})
+    <insert id="save" parameterType="board" useGeneratedKeys="true" keyProperty="id">
+        insert into board_table(boardWriter, boardPassword, boardTitle, boardContents, fileAttached)
+        values (#{boardWriter}, #{boardPassword}, #{boardTitle}, #{boardContents}, #{fileAttached})
     </insert>
+<!--    <insert id="save" parameterType="board" -->
+<!--        INSERT INTO board_table(boardTitle, boardWriter, boardContents, boardPassword)-->
+<!--        values (#{boardTitle}, #{boardWriter}, #{boardContents}, #{boardPassword})-->
+<!--    </insert>-->
     <insert id="saveFile" parameterType="boardFile">
         INSERT INTO board_file_table(originalFileName, storedFileName, boardId)
         values (#{originalFileName}, #{storedFileName}, #{boardId})

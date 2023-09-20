@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -21,11 +22,17 @@ public class BoardController {
     }
 
     @PostMapping("/board/boardSave")
-    public String save(@ModelAttribute BoardDTO boardDTO){
+    public String save(@ModelAttribute BoardDTO boardDTO) throws IOException {
         System.out.println(boardDTO + " post controller");
         boardService.save(boardDTO);
-        return "index";
+        return "redirect:/board/boardFindAll";
     }
+//    @PostMapping("/board/boardSave")
+//    public String save(@ModelAttribute BoardDTO boardDTO){
+//        System.out.println(boardDTO + " post controller");
+//        boardService.save(boardDTO);
+//        return "index";
+//    }
 
     @GetMapping("/board/boardFindAll")
     public String findAll(Model model){
