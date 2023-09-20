@@ -102,9 +102,6 @@
                     // document.getElementById("comment-writer").value = "";
                     // document.getElementById("comment-text").value = "";
 
-
-
-
                 },
                 error: function () {
                     console.log("댓글 작성 실패")

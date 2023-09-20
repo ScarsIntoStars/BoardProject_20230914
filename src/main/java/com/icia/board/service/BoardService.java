@@ -66,4 +66,8 @@ public class BoardService {
     }
 
 
+    public int getTotal() {
+        int total = boardRepository.getTotal();
+        return total;
+    }
 }

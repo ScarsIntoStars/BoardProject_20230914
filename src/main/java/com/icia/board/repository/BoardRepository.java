@@ -32,4 +32,9 @@ public class BoardRepository {
     public void saveFile(BoardFileDTO boardFileDTO) {
         sql.insert("Board.saveFile", boardFileDTO);
     }
+
+    public int getTotal() {
+        int total = sql.selectOne("Board.total");
+        return total;
+    }
 }

@@ -5,10 +5,7 @@ import com.icia.board.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -42,6 +39,13 @@ public class BoardController {
         BoardDTO boardDTO = boardService.findById(id);
         model.addAttribute("board", boardDTO);
         return "board/boardFindById";
+    }
+
+    @GetMapping("/board/boardTotle")
+    public @ResponseBody int getTotal(){
+        int total = boardService.getTotal();
+        System.out.println(total);
+        return total;
     }
 
 //    @PostMapping("/board/boardFindById")
